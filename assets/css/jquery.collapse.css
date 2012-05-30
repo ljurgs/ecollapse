@@ -1,0 +1,14 @@
+.jquery-collapse-head {
+	padding-right: 15px;
+	background-image: url('../image/arrow_right_15_15.gif');
+	background-repeat: no-repeat;
+	background-position: 100%;
+}
+
+.jquery-collapse-head.active {
+	padding-right: 15px;
+	background-image: url('../image/arrow_down_15_15.gif');
+	background-repeat: no-repeat;
+	background-position: 100%;
+}
+
