@@ -1,38 +1,42 @@
 <?php
 
 /**
- * ECollapse makes a HTML DOM element collapsible as specified by passed options
+ * ECollapse makes a HTML DOM element collapsible as specified by passed options.
  *
  * Based on the jQuery-Collapse script
  * @link http://webcloud.se/code/jQuery-Collapse/
  *
  * @author Luke Jurgs
- * @version 0.0.2-2012-03-03
+ * @version 0.0.3-2012-31-05
  */
 class ECollapse extends CWidget {
 
 	private $_assetUrl;
 	/**
-	 * @var string $selector the css selector to apply the behaviour to, defaults to '.collaspe'.
+	 * @var string the css selector to apply the behaviour to.
+	 * Default: '.collapse'.
 	 */
 	public $selector = '.collapse';
 	/**
-	 * @var boolean should the selected element start in a collapsed state, defaults to false.
+	 * @var boolean should the selected element start in a collapsed state.
+	 * Default: false.
 	 */
 	public $collapsed = true;
 	/**
-	 * @var mixed $speed the duration of the default animation, replaces the string '{duration}' in $show and $hide,
-   * valid values are: 'fast', 'slow' or a integer specifying milliseconds, defaults to 'fast'.
+	 * @var mixed the duration of the default animation, replaces the string '{duration}' in $show and $hide.
+   * Valid values are: 'fast', 'slow' or a integer specifying milliseconds.
+	 * Default: 'fast'.
 	 */
 	public $duration = 'fast';
 	/**
-	 * @var string $cssFile the CSS file used for the widget. If null (the default) the included css is used.
+	 * @var string the CSS file used for the widget. If null the included css is used.
+	 * Default: null.
 	 * @see assets/css/jquery.collapse.css
 	 */
 	public $cssFile;
 	/**
-	 * @var string $show a javascript function that defines how the content should be visually expanded. The string
-	 * should begin with 'js:' so CJavascript::encode handles it correctly.
+	 * @var string a javascript function that defines how the content should be visually expanded.
+	 * @see CJavaScript::encode
 	 */
 	public $show = 'js:
 		function() {
@@ -42,8 +46,8 @@ class ECollapse extends CWidget {
 			}, "{duration}");
 		}';
 	/**
-	 * @var string $hide a function that defines how the content should be visually hidden. The string
-   * should begin with 'js:' so CJavascript::encode handles it correctly.
+	 * @var string a function that defines how the content should be visually hidden.
+	 * @see CJavaScript::encode
 	 */
 	public $hide = 'js:
 		function() {
@@ -53,20 +57,24 @@ class ECollapse extends CWidget {
 			}, "{duration}");
 		}';
 	/**
-	 * @var string $head the css selector of the element(s) you want act as clickable headings, defaults to 'h3'.
+	 * @var string the css selector of the element(s) you want act as clickable headings.
+	 * Default: 'h3'.
 	 */
 	public $head = 'h3';
 	/**
-	 * @var string $group the css selector of the element(s) to group hidden content, defaults to 'div, ul'.
+	 * @var string the css selector of the element(s) to group hidden content.
+	 * Default: 'div, ul'.
 	 */
 	public $group = 'div, ul';
 	/**
-	 * @var string $cookieName the name of cookie used by the plugin, defaults to 'collapse'.
+	 * @var string the name of cookie used by the plugin.
+	 * Default: 'collapse'.
 	 */
 	public $cookieName = 'collapse';
 	/**
-	 * @var bool $cookieEnabled should the plugin use the inbuilt cookie functionality to remember the state of collapsible
-	 * elements between visits, defaults to true.
+	 * @var bool should the plugin use the inbuilt cookie functionality to remember the state of collapsible
+	 * elements between visits.
+	 * Default: true.
 	 */
 	public $cookieEnabled = true;
 
