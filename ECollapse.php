@@ -7,11 +7,43 @@
  * @link http://webcloud.se/code/jQuery-Collapse/
  *
  * @author Luke Jurgs
- * @version 0.0.3-2012-31-05
+ * @version 0.0.4-2012-06-07
  */
 class ECollapse extends CWidget {
 
-	private $_assetUrl;
+	/**
+	 * @const ARROW_SET_A arrow set a.
+	 */
+	const ARROW_SET_A = 'a';	
+	/**
+	 * @const ARROW_SET_B arrow set b.
+	 */
+	const ARROW_SET_B = 'b';	
+	/**
+	 * @const ARROW_SET_C arrow set c.
+	 */
+	const ARROW_SET_C = 'c';	
+	/**
+	 * @const ARROW_SMALL small arrows.
+	 */
+	const ARROW_SMALL = 'small';
+	/**
+	 * @const ARROW_MEDIUM medium arrows.
+	 */
+	const ARROW_MEDIUM = 'medium';
+	/**
+	 * @const ARROW_LARGE large arrows.
+	 */
+	const ARROW_LARGE = 'large';
+	/**
+	 * @const ARROW_POSITION_LEFT arrows positioned on the left.
+	 */
+	const ARROW_POSITION_LEFT = 'left';
+	/**
+	 * @const ARROW_POSITION_RIGHT arrows positioned on the right.
+	 */
+	const ARROW_POSITION_RIGHT = 'right';
+
 	/**
 	 * @var string the css selector to apply the behaviour to.
 	 * Default: '.collapse'.
@@ -77,7 +109,35 @@ class ECollapse extends CWidget {
 	 * Default: true.
 	 */
 	public $cookieEnabled = true;
+	/**
+	 * @var string the arrow set to use. Only used if {@link cssFile} is not set.
+	 * <pre>Possible values:
+	 * ECollapse::ARROW_SET_A
+	 * ECollapse::ARROW_SET_B
+	 * ECollapse::ARROW_SET_C
+	 * </pre>
+	 */
+	public $iconSet = self::ARROW_SET_A;
+	/**
+	 * @var string the arrow size to use. Only used if {@link cssFile} is not set.
+	 * <pre>Possible values:
+	 * ECollapse::ARROW_SMALL
+	 * ECollapse::ARROW_MEDIUM
+	 * ECollapse::ARROW_LARGE
+	 * </pre>
+	 */
+	public $arrowSize = self::ARROW_SMALL;
+	/**
+	 * @var string the arrow position to use. Only used if {@link cssFile} is not set.
+	 * <pre>Possible values:
+	 * ECollapse::ARROW_POSITION_LEFT
+	 * ECollapse::ARROW_POSITION_RIGHT
+	 * </pre>
+	 */
+	public $arrowPosition = self::ARROW_POSITION_LEFT;
 
+	private $_assetUrl;
+	
 	/**
 	 * Initializes the widget.
 	 * This method is called by {@link CBaseController::createWidget}
@@ -110,9 +170,11 @@ class ECollapse extends CWidget {
 		if (YII_DEBUG) {
 			$cookieScript = '/js/jquery.cookie.js';
 			$collapseScript = '/js/jquery.collapse.js';
+			$defaultCss = '/css/jquery.collapse.css';
 		} else {
 			$cookieScript = '/js/jquery.cookie.min.js';
 			$collapseScript = '/js/jquery.collapse.min.js';
+			$defaultCss = '/css/jquery.collapse.min.css';
 		}
 		//do not register unused JS
 		if ($this->cookieEnabled) {
@@ -123,9 +185,12 @@ class ECollapse extends CWidget {
 		$javascript = '';
 		//register css
 		if (null === $this->cssFile) {
-			$clientScript->registerCssFile($this->_assetUrl . '/css/jquery.collapse.css');
+			$clientScript->registerCssFile($this->_assetUrl . $defaultCss);
 			//apply the class in the default css to the head elements
-			$javascript .= "jQuery('$this->selector $this->head').addClass('jquery-collapse-head');";
+			$javascript .= "jQuery('$this->selector $this->head').addClass('jq-c-h');";
+			$javascript .= "jQuery('$this->selector $this->head').addClass('jq-c-{$this->iconSet}');";
+			$javascript .= "jQuery('$this->selector $this->head').addClass('jq-c-{$this->arrowSize}');";
+			$javascript .= "jQuery('$this->selector $this->head').addClass('jq-c-{$this->arrowPosition}');";
 		} else {
 			$clientScript->registerCssFile($this->cssFile);
 		}
