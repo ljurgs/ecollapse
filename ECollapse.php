@@ -14,15 +14,15 @@ class ECollapse extends CWidget {
 	/**
 	 * @const ARROW_SET_A arrow set a.
 	 */
-	const ARROW_SET_A = 'a';	
+	const ARROW_SET_A = 'a';
 	/**
 	 * @const ARROW_SET_B arrow set b.
 	 */
-	const ARROW_SET_B = 'b';	
+	const ARROW_SET_B = 'b';
 	/**
 	 * @const ARROW_SET_C arrow set c.
 	 */
-	const ARROW_SET_C = 'c';	
+	const ARROW_SET_C = 'c';
 	/**
 	 * @const ARROW_SMALL small arrows.
 	 */
@@ -56,7 +56,7 @@ class ECollapse extends CWidget {
 	public $collapsed = true;
 	/**
 	 * @var mixed the duration of the default animation, replaces the string '{duration}' in $show and $hide.
-   * Valid values are: 'fast', 'slow' or a integer specifying milliseconds.
+	 * Valid values are: 'fast', 'slow' or a integer specifying milliseconds.
 	 * Default: 'fast'.
 	 */
 	public $duration = 'fast';
@@ -137,7 +137,7 @@ class ECollapse extends CWidget {
 	public $arrowPosition = self::ARROW_POSITION_LEFT;
 
 	private $_assetUrl;
-	
+
 	/**
 	 * Initializes the widget.
 	 * This method is called by {@link CBaseController::createWidget}
