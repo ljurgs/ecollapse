@@ -117,7 +117,7 @@ class ECollapse extends CWidget {
 	 * ECollapse::ARROW_SET_C
 	 * </pre>
 	 */
-	public $iconSet = self::ARROW_SET_A;
+	public $arrowSet = self::ARROW_SET_A;
 	/**
 	 * @var string the arrow size to use. Only used if {@link cssFile} is not set.
 	 * <pre>Possible values:
@@ -188,7 +188,7 @@ class ECollapse extends CWidget {
 			$clientScript->registerCssFile($this->_assetUrl . $defaultCss);
 			//apply the class in the default css to the head elements
 			$javascript .= "jQuery('$this->selector $this->head').addClass('jq-c-h');";
-			$javascript .= "jQuery('$this->selector $this->head').addClass('jq-c-{$this->iconSet}');";
+			$javascript .= "jQuery('$this->selector $this->head').addClass('jq-c-{$this->arrowSet}');";
 			$javascript .= "jQuery('$this->selector $this->head').addClass('jq-c-{$this->arrowSize}');";
 			$javascript .= "jQuery('$this->selector $this->head').addClass('jq-c-{$this->arrowPosition}');";
 		} else {
